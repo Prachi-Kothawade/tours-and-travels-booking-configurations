@@ -1,0 +1,19 @@
+server:
+  port: 8083
+
+cloud:
+  gateway:
+    routes:
+    - id: tours-and-travels-booking
+      uri: lb://tours-and-travels-booking
+      predicates:
+      - Path=/api/**
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      default-zone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
